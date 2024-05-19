@@ -1,0 +1,21 @@
+{
+	backend: 
+		barcode reader: vivino inceledim şarap için labeldan yapıyor. 
+		barkodda iki aşama var: barkodtan bi string alıyoruz bu stringle barkod çeşitleri var ona göre bi sonuç alabildiğimiz ürün isimli falan bir outputa ulaşıyoruz ama bence bu sağlıklı yöntem değil. Çünkü şu an kullandığımız kütüphane internetteki çok iyi çekilmiş barkodları bile okumakta sorun çıkartıyor. Bence burada vivinoda yapıldığı kozmetik ürünler için bir image processing bi şey geliştirilmeli. Süreci uzatan bir şey ama zaten şu an barkod okuyarak elde ettiğimiz bilgilerde işe yaramıyor. Bu konuyu bence kesin tekrar incelememiz lazım bana şu an için mantıklı gelen süreci uzatacak bi etmen ama sağlıklı sonuç falan dönebilmemiz için buraya bi image processing algo geliştirmemiz lazım vivino (ya da alternatif çözğmler düşünmeliyiz) barkodtan okuma olayı çok etkili durmuyor şu an için.
+		face skin analysis: burada da image processing bir çalışma bekliyoruz zaten şimdilik bu hafta sonunda dummy apiya bağlanıp dummy result verecek backendi bitirmek amacımız.
+		burada skin analizde elimize geçecek parametrelere ihtiyacım var
+		Q-A part: dataları nasıl kullanıp tutacağımızı belirleyeceğimiz bir iş var.
+	Şimdilik barkod olayı önemli buna bir çözüm bulmamız lazım bence.
+} burası 26sına bitecek planda
+{
+	front: 
+		wireframe + login sigunp pages : 2 week
+		skin analysis: 1.5 week
+		barcode results: 1 week
+		q-a part : 1.5 week
+		tracker : 1 week
+		
+	7 haftalık iş var
+	Ağustosta 1 ay yokum ben amaç agahın devam edebileceği backend frontend bağlamada bi şey bırakmadan sayfaları componentleri geliştirebileceği şekilde bırakmak. Bayram tatili var benim ekstra zaman ayırabileceğim süreci hızlandırabiliriz 
+}
+

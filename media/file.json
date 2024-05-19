@@ -1,0 +1,236 @@
+{
+  "info": {
+    "name": "FileController API",
+    "_postman_id": "12345-abcde-67890",
+    "description": "Collection of API requests for FileController",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Login",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"username\": \"your_username\",\n  \"password\": \"your_password\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/auth/login",
+          "host": [
+            "http://localhost:8080"
+          ],
+          "path": [
+            "api",
+            "auth",
+            "login"
+          ]
+        }
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// Check if response is a raw token string",
+              "if (responseBody.startsWith(\"ey\")) {",
+              "    postman.setEnvironmentVariable(\"token\", responseBody);",
+              "} else {",
+              "    var jsonData = JSON.parse(responseBody);",
+              "    postman.setEnvironmentVariable(\"token\", jsonData.token);",
+              "}"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Upload File",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}",
+            "type": "text"
+          },
+          {
+            "key": "Content-Type",
+            "value": "multipart/form-data",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "file",
+              "type": "file",
+              "src": ""
+            }
+          ]
+        },
+        "url": {
+          "raw": "http://localhost:8080/files/upload/:customerId",
+          "host": [
+            "http://localhost:8080"
+          ],
+          "path": [
+            "files",
+            "upload",
+            ":customerId"
+          ],
+          "variable": [
+            {
+              "key": "customerId",
+              "value": "1"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Delete File",
+      "request": {
+        "method": "DELETE",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/files/delete/:fileId",
+          "host": [
+            "http://localhost:8080"
+          ],
+          "path": [
+            "files",
+            "delete",
+            ":fileId"
+          ],
+          "variable": [
+            {
+              "key": "fileId",
+              "value": "1"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Update File",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}",
+            "type": "text"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"fileName\": \"updated_filename.txt\",\n  \"filePath\": \"/updated/path/updated_filename.txt\",\n  \"fileType\": \"text/plain\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8080/files/update/:fileId",
+          "host": [
+            "http://localhost:8080"
+          ],
+          "path": [
+            "files",
+            "update",
+            ":fileId"
+          ],
+          "variable": [
+            {
+              "key": "fileId",
+              "value": "1"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Download File",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/files/download/:fileName",
+          "host": [
+            "http://localhost:8080"
+          ],
+          "path": [
+            "files",
+            "download",
+            ":fileName"
+          ],
+          "variable": [
+            {
+              "key": "fileName",
+              "value": "example.txt"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get Files for Customer",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/files/customer/:customerId",
+          "host": [
+            "http://localhost:8080"
+          ],
+          "path": [
+            "files",
+            "customer",
+            ":customerId"
+          ],
+          "variable": [
+            {
+              "key": "customerId",
+              "value": "1"
+            }
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
+
